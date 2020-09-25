@@ -1,4 +1,5 @@
 //Tristin Young
+//Collyn Lindley
 //COP 3402 Systems Software
 //Professor Montagne
 // Sep 20 2020
@@ -68,11 +69,9 @@ int main(int argc, char *argv[])
     //creating memory for user to input file name
     char *inputFileName;
     inputFileName = calloc(100, sizeof(int));
-    //getting filename from user
-    printf("Enter the name of the input file to be used (including '.txt'):\n");
-    scanf("%s", inputFileName);
+	 
     //giving the input file ptr meaning
-    inputPtr = fopen(inputFileName, "r");
+    inputPtr = fopen(argv[1], "r");
     //if the file does not exist
     if (inputPtr == NULL)
     {
@@ -274,17 +273,15 @@ int main(int argc, char *argv[])
         }
         printf("\n");
         printf("Stack: ");
-        fflush(stdout);
-        for (int i = 0; i < 15; i++)
+
+        for (int i = 999; i >= sp; i--)
         {
-            printf("%d ", stack[i]);
+         printf("%d%s", stack[i], ((i % 5 == 0) && (i != sp)) ? " | " : " ");
         }
         printf("\n\n");
-        //increment pc
-        //pc++;
     }
 
-    return (0);
+    return 0;
 }
 
 //base function
