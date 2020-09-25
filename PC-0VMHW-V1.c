@@ -140,27 +140,25 @@ int main(int argc, char *argv[])
         //swich to handle R L and M based on opcode
         //printing sequence performed after every execution
 
+		  printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
 
+		  pc++;
 
         switch (OP)
         {
         case 1:
             RF[R] = M;
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 2:
             sp = bp + 1;
             bp = stack[sp - 2];
             pc = stack[sp - 3];
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 3:
             RF[R] = stack[base(L, bp) - M];
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 4:
             stack[base(L, bp) - M] = RF[R];
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 5:
             stack[sp - 1] = base(L, bp);
@@ -168,22 +166,18 @@ int main(int argc, char *argv[])
             stack[sp - 3] = pc;
             bp = sp - 1;
             pc = M;
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 6:
             sp = sp - M;
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 7:
             pc = M;
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 8:
             if (RF[R] == 0)
             {
                 pc = M;
             }
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
 
         case 9:
@@ -199,36 +193,28 @@ int main(int argc, char *argv[])
             {
                 haltFlag = 0;
             }
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
 
         case 10:
             RF[R] = -RF[R];
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 11:
             RF[R] = RF[L] + RF[M];
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 12:
             RF[R] = RF[L] - RF[M];
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 13:
             RF[R] = RF[L] * RF[M];
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 14:
             RF[R] = RF[L] / RF[M];
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 15:
             RF[R] = RF[R] % 2;
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 16:
             RF[R] = RF[L] % RF[M];
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 17:
             if (RF[L] == RF[M])
@@ -237,7 +223,6 @@ int main(int argc, char *argv[])
             }
             else
                 RF[R] = 0;
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 18:
             if (RF[L] != RF[M])
@@ -246,7 +231,6 @@ int main(int argc, char *argv[])
             }
             else
                 RF[R] = 0;
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 19:
             if (RF[L] < RF[M])
@@ -255,7 +239,6 @@ int main(int argc, char *argv[])
             }
             else
                 RF[R] = 0;
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 20:
             if (RF[L] <= RF[M])
@@ -264,7 +247,6 @@ int main(int argc, char *argv[])
             }
             else
                 RF[R] = 0;
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 21:
             if (RF[L] > RF[M])
@@ -273,7 +255,6 @@ int main(int argc, char *argv[])
             }
             else
                 RF[R] = 0;
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 22:
             if (RF[L] >= RF[M])
@@ -282,7 +263,6 @@ int main(int argc, char *argv[])
             }
             else
                 RF[R] = 0;
-            printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         }
         printf("                                   %d      %d     %d\n", pc, bp, sp);
@@ -301,7 +281,7 @@ int main(int argc, char *argv[])
         }
         printf("\n\n");
         //increment pc
-        pc++;
+        //pc++;
     }
 
     return (0);
