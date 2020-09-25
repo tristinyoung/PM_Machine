@@ -1,6 +1,8 @@
 # PM_Machine
 Hw 1 COP 3402
+
 Tristin Young
+
 Collyn Lindley
 
 How to compile and run the VM:
