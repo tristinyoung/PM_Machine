@@ -139,8 +139,8 @@ int main(int argc, char *argv[])
 
         //swich to handle R L and M based on opcode
         //printing sequence performed after every execution
-        
-        
+
+
 
         switch (OP)
         {
@@ -167,7 +167,7 @@ int main(int argc, char *argv[])
             stack[sp - 2] = bp;
             stack[sp - 3] = pc;
             bp = sp - 1;
-            pc = M - 1;
+            pc = M;
             printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 6:
@@ -175,13 +175,13 @@ int main(int argc, char *argv[])
             printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 7:
-            pc = M - 1;
+            pc = M;
             printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
         case 8:
             if (RF[R] == 0)
             {
-                pc = M - 1;
+                pc = M;
             }
             printf("%d %s %d %d %d", pc, instructionName[text[pc].op - 1], text[pc].r, text[pc].l, text[pc].m);
             break;
@@ -308,10 +308,9 @@ int main(int argc, char *argv[])
 }
 
 //base function
-int base(l, base)
+int base(int l, int base)
 {
-    int b1;
-    b1 = base;
+    int b1 = base;
     while (l > 0)
     {
         b1 = stack[b1];
